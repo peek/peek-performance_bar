@@ -113,6 +113,8 @@ renderPerformanceBar = ->
   @bar ?= new PerformanceBar
   @bar.render 500
 
+updateStatus = (html) ->
+  $('#serverstats-status').html html
 pjaxStart = null
 $(document).on 'pjax:start', (event) ->
   pjaxStart = event.timeStamp
@@ -139,7 +141,7 @@ $(document).on 'pjax:end', (event, xhr) ->
 
     span = $('<span>', {'class': 'tooltip', title: 'PJAX navigation time'})
       .text(PerformanceBar.formatTime(total))
-    $('#serverstats-status').html(span)
+    updateStatus span
 
     pjaxStart = null
   , 0
