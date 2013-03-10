@@ -152,6 +152,7 @@ $(document).on 'pjax:end', (event, xhr) ->
     console.log 'why u called'
     span = $('<span>', {'class': 'tooltip', title: 'PJAX navigation time'})
       .text(PerformanceBar.formatTime(total))
+    span.tipsy({ gravity: 'n' })
     updateStatus span
 
     pjaxStart = null
