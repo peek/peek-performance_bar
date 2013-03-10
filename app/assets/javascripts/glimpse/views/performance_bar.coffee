@@ -113,22 +113,21 @@ renderPerformanceBar = ->
   @bar ?= new PerformanceBar
   @bar.render 500
 
-@pjaxStart = 0
+pjaxStart = null
 $(document).on 'pjax:start', (event) ->
-  @pjaxStart = event.timeStamp
+  pjaxStart = event.timeStamp
 
 $(document).on 'pjax:end', (event, xhr) ->
   pjaxEnd    = event.timeStamp
-  total      = pjaxEnd - @pjaxStart
+  total      = pjaxEnd - pjaxStart
   serverTime = if xhr then parseInt(xhr.getResponseHeader('X-Runtime')) else 0
 
   # Defer to include the timing of pjax hook evaluation
   setTimeout ->
     now = new Date().getTime()
-
     bar = new PerformanceBar
       timing:
-        requestStart: @pjaxStart,
+        requestStart: pjaxStart,
         responseEnd: pjaxEnd,
         domLoading: pjaxEnd,
         domInteractive: now
