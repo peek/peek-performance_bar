@@ -40,7 +40,7 @@ class PerformanceBar
   # and loading from cache.
   render: (serverTime=0) ->
     @el.empty()
-    @addBar 'frontend', '#90d35b', 'domLoading',   'domInteractive'
+    @addBar 'frontend', '#90d35b', 'domLoading', 'domInteractive'
 
     # time spent talking with the app according to performance.timing
     perfNetworkTime = (@timing.responseEnd - @timing.requestStart)
@@ -110,19 +110,20 @@ class PerformanceBar
     offset * (@width / @total())
 
 renderPerformanceBar = ->
-  @bar ?= new PerformanceBar
-  @bar.render 500
+  resp = $('#glimpse-server_response_time')
+  time = Math.round(resp.data('time') * 1000)
+
+  bar = new PerformanceBar
+  bar.render time
+
+  span = $('<span>', {'class': 'tooltip', title: 'Total navigation time for this page.'})
+    .text(PerformanceBar.formatTime(bar.total()))
+  span.tipsy({ gravity: 'n' })
+  updateStatus span
+
 
 updateStatus = (html) ->
-  $('#serverstats-status').html html
-
-showResponseTime = ->
-  resp = $('#glimpse-server_response_time')
-  time = PerformanceBar.formatTime resp.data('time')
-
-  span = $('<span>', {'class': 'tooltip', title: 'Response time for this page'})
-    .text(time)
-  updateStatus span
+  $('#serverstats').html html
 
 pjaxStart = null
 $(document).on 'pjax:start', (event) ->
@@ -148,6 +149,7 @@ $(document).on 'pjax:end', (event, xhr) ->
 
     bar.render serverTime
 
+    console.log 'why u called'
     span = $('<span>', {'class': 'tooltip', title: 'PJAX navigation time'})
       .text(PerformanceBar.formatTime(total))
     updateStatus span
@@ -157,4 +159,3 @@ $(document).on 'pjax:end', (event, xhr) ->
 
 $ ->
   renderPerformanceBar()
-  showResponseTime()
