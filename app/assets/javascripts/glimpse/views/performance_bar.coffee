@@ -115,6 +115,15 @@ renderPerformanceBar = ->
 
 updateStatus = (html) ->
   $('#serverstats-status').html html
+
+showResponseTime = ->
+  resp = $('#glimpse-server_response_time')
+  time = PerformanceBar.formatTime resp.data('time')
+
+  span = $('<span>', {'class': 'tooltip', title: 'Response time for this page'})
+    .text(time)
+  updateStatus span
+
 pjaxStart = null
 $(document).on 'pjax:start', (event) ->
   pjaxStart = event.timeStamp
@@ -146,5 +155,6 @@ $(document).on 'pjax:end', (event, xhr) ->
     pjaxStart = null
   , 0
 
-$(document).on 'glimpse:update', ->
+$ ->
   renderPerformanceBar()
+  showResponseTime()
