@@ -1,11 +1,15 @@
 # Glimpse::PerformanceBar
 
-Provide a glimpse into the MySQL queries made during your application's requests.
+Provide a glimpse into `window.performance` timing.
 
 Things this glimpse view provides:
 
-- Total number of MySQL queries called during the request
-- The duration of the queries made during the request
+- Frontend
+- Latency / Receiving
+- Backend
+- TCP / SSL
+- Redirect
+- DNS Lookup
 
 ## Installation
 
@@ -33,7 +37,7 @@ You'll then need to add the following CSS and CoffeeScript:
 
 CSS:
 
-```css
+```scss
 //= require glimpse
 //= require glimpse/views/performance_bar
 ```
