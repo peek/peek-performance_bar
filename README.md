@@ -29,6 +29,31 @@ Add the following to your `config/initializers/glimpse.rb`:
 Glimpse.into Glimpse::Views::PerformanceBar
 ```
 
+You'll then need to add the following CSS and CoffeeScript:
+
+CSS:
+
+```css
+//= require glimpse
+//= require glimpse/views/performance_bar
+```
+
+CoffeeScript:
+
+```coffeescript
+#= require glimpse
+#= require glimpse/views/performance_bar
+```
+
+Lastly this view requires you insert an additional partial after the `glimpse/results`:
+
+```erb
+...
+<%= yield %>
+<%= render 'glimpse/results' %>
+<%= render 'glimpse/results/performance_bar' %>
+...
+```
 
 ## Contributors
 
