@@ -29,6 +29,12 @@ Add the following to your `config/initializers/glimpse.rb`:
 Glimpse.into Glimpse::Views::PerformanceBar
 ```
 
+
+## Contributors
+
+- [@josh](https://github.com/josh) - The original implementation.
+- [@dewski](https://github.com/dewski) - Just the extractor.
+
 ## Contributing
 
 1. Fork it
