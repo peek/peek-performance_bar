@@ -125,13 +125,13 @@ renderPerformanceBar = ->
 updateStatus = (html) ->
   $('#serverstats').html html
 
-pjaxStart = null
-$(document).on 'pjax:start', (event) ->
-  pjaxStart = event.timeStamp
+ajaxStart = null 
+$(document).on 'pjax:start, page:fetch', (event) ->
+  ajaxStart = event.timeStamp
 
-$(document).on 'pjax:end', (event, xhr) ->
-  pjaxEnd    = event.timeStamp
-  total      = pjaxEnd - pjaxStart
+$(document).on 'pjax:end, page:change', (event, xhr) ->
+  ajaxEnd    = event.timeStamp
+  total      = ajaxEnd - ajaxStart
   serverTime = if xhr then parseInt(xhr.getResponseHeader('X-Runtime')) else 0
 
   # Defer to include the timing of pjax hook evaluation
@@ -139,23 +139,27 @@ $(document).on 'pjax:end', (event, xhr) ->
     now = new Date().getTime()
     bar = new PerformanceBar
       timing:
-        requestStart: pjaxStart,
-        responseEnd: pjaxEnd,
-        domLoading: pjaxEnd,
+        requestStart: ajaxStart,
+        responseEnd: ajaxEnd,
+        domLoading: ajaxEnd,
         domInteractive: now
       isLoaded: -> true
-      start: -> pjaxStart
+      start: -> ajaxStart
       end: -> now
 
     bar.render serverTime
 
-    console.log 'why u called'
-    span = $('<span>', {'class': 'tooltip', title: 'PJAX navigation time'})
+    if $.fn.pjax?
+      tech = 'PJAX'
+    else
+      tech = 'Turbolinks'
+
+    span = $('<span>', {'class': 'tooltip', title: "#{tech} navigation time"})
       .text(PerformanceBar.formatTime(total))
     span.tipsy({ gravity: 'n' })
     updateStatus span
 
-    pjaxStart = null
+    ajaxStart = null
   , 0
 
 $ ->
