@@ -62,6 +62,9 @@ Lastly this view requires you insert an additional partial after the `glimpse/re
 ## Contributors
 
 - [@josh](https://github.com/josh) - The original implementation.
+- [@tmm1](https://github.com/tmm1) - The original implementation.
+- [@rtomayko](https://github.com/rtomayko) - The original implementation.
+- [@kneath](https://github.com/kneath) - The original implementation.
 - [@dewski](https://github.com/dewski) - Just the extractor.
 
 ## Contributing
