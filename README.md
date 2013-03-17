@@ -2,6 +2,8 @@
 
 Provide a glimpse into `window.performance` timing.
 
+![image](https://f.cloud.github.com/assets/79995/268624/14d9df90-8f47-11e2-9718-111c7c367974.png)
+
 Things this glimpse view provides:
 
 - Frontend
