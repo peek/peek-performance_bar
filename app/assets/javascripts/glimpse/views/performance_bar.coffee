@@ -126,10 +126,10 @@ updateStatus = (html) ->
   $('#serverstats').html html
 
 ajaxStart = null 
-$(document).on 'pjax:start, page:fetch', (event) ->
+$(document).on 'pjax:start page:fetch', (event) ->
   ajaxStart = event.timeStamp
 
-$(document).on 'pjax:end, page:change', (event, xhr) ->
+$(document).on 'pjax:end page:change', (event, xhr) ->
   ajaxEnd    = event.timeStamp
   total      = ajaxEnd - ajaxStart
   serverTime = if xhr then parseInt(xhr.getResponseHeader('X-Runtime')) else 0
