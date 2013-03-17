@@ -94,7 +94,7 @@ class PerformanceBar
     left = @mapH(offset)
     width = @mapH(time)
 
-    bar = $("<li class='tooltip'>#{name}</li>")
+    bar = $("<li class='tooltip'></li>")
     title = "#{name}: #{PerformanceBar.formatTime(time)}"
     title += "\n\n#{info}".replace(/\n/g, '<br/>') if info
     bar.attr 'title', title
@@ -102,7 +102,7 @@ class PerformanceBar
       width: "#{width}px"
       left:  "#{left}px"
       background: color
-    bar.tipsy gravity: 'n', html: true
+    bar.tipsy gravity: 'n'
     @el.append bar
 
   # Map a time offset value to a horizontal pixel offset.
