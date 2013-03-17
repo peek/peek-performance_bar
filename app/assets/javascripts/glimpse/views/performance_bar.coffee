@@ -94,10 +94,8 @@ class PerformanceBar
     left = @mapH(offset)
     width = @mapH(time)
 
-    bar = $("<li class='tooltip'></li>")
     title = "#{name}: #{PerformanceBar.formatTime(time)}"
-    title += "\n\n#{info}".replace(/\n/g, '<br/>') if info
-    bar.attr 'title', title
+    bar = $ '<li></li>', title: title, class: 'tooltip'
     bar.css
       width: "#{width}px"
       left:  "#{left}px"
