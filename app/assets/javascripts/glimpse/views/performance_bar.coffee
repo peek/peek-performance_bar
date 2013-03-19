@@ -32,7 +32,7 @@ class PerformanceBar
     @el = $('.performance-bar')
     @[k] = v for k, v of options
     @width  ?= @el.width()
-    @timing ?= window.performance.timing
+    @timing ?= window.performance?.timing
 
   # Render the performance bar in the associated element. This is a little weird
   # because it includes the server-side rendering time reported with the
