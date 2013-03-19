@@ -95,7 +95,7 @@ class PerformanceBar
     width = @mapH(time)
 
     title = "#{name}: #{PerformanceBar.formatTime(time)}"
-    bar = $ '<li></li>', title: title, class: 'tooltip'
+    bar = $ '<li></li>', title: title, class: 'glimpse-tooltip'
     bar.css
       width: "#{width}px"
       left:  "#{left}px"
@@ -114,7 +114,7 @@ renderPerformanceBar = ->
   bar = new PerformanceBar
   bar.render time
 
-  span = $('<span>', {'class': 'tooltip', title: 'Total navigation time for this page.'})
+  span = $('<span>', {'class': 'glimpse-tooltip', title: 'Total navigation time for this page.'})
     .text(PerformanceBar.formatTime(bar.total()))
   span.tipsy({ gravity: 'n' })
   updateStatus span
@@ -123,7 +123,7 @@ renderPerformanceBar = ->
 updateStatus = (html) ->
   $('#serverstats').html html
 
-ajaxStart = null 
+ajaxStart = null
 $(document).on 'pjax:start page:fetch', (event) ->
   ajaxStart = event.timeStamp
 
@@ -152,7 +152,7 @@ $(document).on 'pjax:end page:change', (event, xhr) ->
     else
       tech = 'Turbolinks'
 
-    span = $('<span>', {'class': 'tooltip', title: "#{tech} navigation time"})
+    span = $('<span>', {'class': 'glimpse-tooltip', title: "#{tech} navigation time"})
       .text(PerformanceBar.formatTime(total))
     span.tipsy({ gravity: 'n' })
     updateStatus span
