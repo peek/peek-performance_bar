@@ -29,7 +29,7 @@ class PerformanceBar
   # Create a new PerformanceBar view bound to a given element. The el and width
   # options should be provided here.
   constructor: (options={}) ->
-    @el = $('.performance-bar')
+    @el = $('#glimpse-view-performance-bar .performance-bar')
     @[k] = v for k, v of options
     @width  ?= @el.width()
     @timing ?= window.performance.timing
@@ -161,4 +161,7 @@ $(document).on 'pjax:end page:change', (event, xhr) ->
   , 0
 
 $ ->
-  renderPerformanceBar()
+  if window.performance
+    renderPerformanceBar()
+  else
+    $('#glimpse-view-performance-bar').remove()
