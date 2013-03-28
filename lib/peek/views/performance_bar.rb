@@ -1,4 +1,4 @@
-module Glimpse
+module Peek
   module Views
     class PerformanceBar < View
     end

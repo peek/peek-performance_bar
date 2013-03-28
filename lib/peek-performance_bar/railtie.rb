@@ -1,9 +1,9 @@
 require 'rack/process_utilization'
 
-module Glimpse
+module Peek
   module PerformanceBar
     class Railtie < ::Rails::Engine
-      initializer 'glimpse.performance_bar.mount_process_utilization' do |app|
+      initializer 'peek.performance_bar.mount_process_utilization' do |app|
         app.config.middleware.use Rack::ProcessUtilization
       end
     end

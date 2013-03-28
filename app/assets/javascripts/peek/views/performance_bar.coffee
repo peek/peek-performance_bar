@@ -29,7 +29,7 @@ class PerformanceBar
   # Create a new PerformanceBar view bound to a given element. The el and width
   # options should be provided here.
   constructor: (options={}) ->
-    @el = $('#glimpse-view-performance-bar .performance-bar')
+    @el = $('#peek-view-performance-bar .performance-bar')
     @[k] = v for k, v of options
     @width  ?= @el.width()
     @timing ?= window.performance.timing
@@ -95,7 +95,7 @@ class PerformanceBar
     width = @mapH(time)
 
     title = "#{name}: #{PerformanceBar.formatTime(time)}"
-    bar = $ '<li></li>', title: title, class: 'glimpse-tooltip'
+    bar = $ '<li></li>', title: title, class: 'peek-tooltip'
     bar.css
       width: "#{width}px"
       left:  "#{left}px"
@@ -108,13 +108,13 @@ class PerformanceBar
     offset * (@width / @total())
 
 renderPerformanceBar = ->
-  resp = $('#glimpse-server_response_time')
+  resp = $('#peek-server_response_time')
   time = Math.round(resp.data('time') * 1000)
 
   bar = new PerformanceBar
   bar.render time
 
-  span = $('<span>', {'class': 'glimpse-tooltip', title: 'Total navigation time for this page.'})
+  span = $('<span>', {'class': 'peek-tooltip', title: 'Total navigation time for this page.'})
     .text(PerformanceBar.formatTime(bar.total()))
   span.tipsy({ gravity: 'n' })
   updateStatus span
@@ -152,7 +152,7 @@ $(document).on 'pjax:end page:change', (event, xhr) ->
     else
       tech = 'Turbolinks'
 
-    span = $('<span>', {'class': 'glimpse-tooltip', title: "#{tech} navigation time"})
+    span = $('<span>', {'class': 'peek-tooltip', title: "#{tech} navigation time"})
       .text(PerformanceBar.formatTime(total))
     span.tipsy({ gravity: 'n' })
     updateStatus span
@@ -164,4 +164,4 @@ $ ->
   if window.performance
     renderPerformanceBar()
   else
-    $('#glimpse-view-performance-bar').remove()
+    $('#peek-view-performance-bar').remove()

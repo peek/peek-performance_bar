@@ -1,10 +1,10 @@
-# Glimpse::PerformanceBar
+# Peek::PerformanceBar
 
-Provide a glimpse into `window.performance` timing.
+Take a peek into the `window.performance` timing behind your app.
 
 ![image](https://f.cloud.github.com/assets/79995/268624/14d9df90-8f47-11e2-9718-111c7c367974.png)
 
-Things this glimpse view provides:
+Things this peek view provides:
 
 - Frontend
 - Latency / Receiving
@@ -17,7 +17,7 @@ Things this glimpse view provides:
 
 Add this line to your application's Gemfile:
 
-    gem 'glimpse-performance_bar'
+    gem 'peek-performance_bar'
 
 And then execute:
 
@@ -25,14 +25,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install glimpse-performance_bar
+    $ gem install peek-performance_bar
 
 ## Usage
 
-Add the following to your `config/initializers/glimpse.rb`: 
+Add the following to your `config/initializers/peek.rb`: 
 
 ```ruby
-Glimpse.into Glimpse::Views::PerformanceBar
+Peek.into Peek::Views::PerformanceBar
 ```
 
 You'll then need to add the following CSS and CoffeeScript:
@@ -40,24 +40,24 @@ You'll then need to add the following CSS and CoffeeScript:
 CSS:
 
 ```scss
-//= require glimpse
-//= require glimpse/views/performance_bar
+//= require peek
+//= require peek/views/performance_bar
 ```
 
 CoffeeScript:
 
 ```coffeescript
-#= require glimpse
-#= require glimpse/views/performance_bar
+#= require peek
+#= require peek/views/performance_bar
 ```
 
-Lastly this view requires you insert an additional partial after the `glimpse/results`:
+Lastly this view requires you insert an additional partial after the `peek/results`:
 
 ```erb
 ...
 <%= yield %>
-<%= render 'glimpse/results' %>
-<%= render 'glimpse/results/performance_bar' %>
+<%= render 'peek/results' %>
+<%= render 'peek/results/performance_bar' %>
 ...
 ```
 
