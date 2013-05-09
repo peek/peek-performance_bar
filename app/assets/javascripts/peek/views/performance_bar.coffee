@@ -100,7 +100,7 @@ class PerformanceBar
       width: "#{width}px"
       left:  "#{left}px"
       background: color
-    bar.tipsy gravity: 'n'
+    bar.tipsy gravity: $.fn.tipsy.autoNS
     @el.append bar
 
   # Map a time offset value to a horizontal pixel offset.
@@ -116,7 +116,7 @@ renderPerformanceBar = ->
 
   span = $('<span>', {'class': 'peek-tooltip', title: 'Total navigation time for this page.'})
     .text(PerformanceBar.formatTime(bar.total()))
-  span.tipsy({ gravity: 'n' })
+  span.tipsy gravity: $.fn.tipsy.autoNS
   updateStatus span
 
 
@@ -154,7 +154,7 @@ $(document).on 'pjax:end page:change', (event, xhr) ->
 
     span = $('<span>', {'class': 'peek-tooltip', title: "#{tech} navigation time"})
       .text(PerformanceBar.formatTime(total))
-    span.tipsy({ gravity: 'n' })
+    span.tipsy gravity: $.fn.tipsy.autoNS
     updateStatus span
 
     ajaxStart = null
