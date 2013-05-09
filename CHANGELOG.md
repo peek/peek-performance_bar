@@ -14,3 +14,7 @@
 
 - Namespace the tooltips to not conflict with application styles. (#8)
 - Don't render the performance bar when `window.performance` doesn't exist. (#10)
+
+# 1.1.3
+
+- Use auto-gravity for tooltips on Peek bars that may be fixed to the bottom of the window.
