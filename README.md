@@ -29,7 +29,7 @@ Or install it yourself as:
 
 ## Usage
 
-Add the following to your `config/initializers/peek.rb`: 
+Add the following to your `config/initializers/peek.rb`:
 
 ```ruby
 Peek.into Peek::Views::PerformanceBar
@@ -49,16 +49,6 @@ CoffeeScript:
 ```coffeescript
 #= require peek
 #= require peek/views/performance_bar
-```
-
-Lastly this view requires you insert an additional partial after the `peek/results`:
-
-```erb
-...
-<%= yield %>
-<%= render 'peek/results' %>
-<%= render 'peek/results/performance_bar' %>
-...
 ```
 
 ## Contributors
