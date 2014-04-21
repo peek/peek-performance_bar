@@ -51,6 +51,22 @@ CoffeeScript:
 #= require peek/views/performance_bar
 ```
 
+## Measuring Ajax performance
+
+If you're using Pjax or Turbolinks, you don't need to do anything more than
+what is documented above.
+
+For custom Ajax events, Peek::PerformanceBar supports custom `peek:start` and
+`peek:end` events.
+
+For example, you could do something like this to update the performance bar
+for all Ajax requests made through jQuery:
+
+```ruby
+$(document).on('ajax:send', function() { $(this).trigger('peek:start') })
+$(document).on('ajax:complete', function() { $(this).trigger('peek:end') })
+```
+
 ## Contributors
 
 - [@josh](https://github.com/josh) - The original implementation.
@@ -58,6 +74,7 @@ CoffeeScript:
 - [@rtomayko](https://github.com/rtomayko) - The original implementation.
 - [@kneath](https://github.com/kneath) - The original implementation.
 - [@dewski](https://github.com/dewski) - Just the extractor.
+- [@barunio](https://github.com/barunio) - Ajax support.
 
 ## Contributing
 
