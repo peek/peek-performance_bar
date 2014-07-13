@@ -18,3 +18,7 @@
 # 1.1.3
 
 - Use auto-gravity for tooltips on Peek bars that may be fixed to the bottom of the window.
+
+# 1.1.4
+
+- Fixed incorrect time on initial page load with newer Turbolinks - #17 (@brandonweiss)
