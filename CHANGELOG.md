@@ -22,3 +22,7 @@
 # 1.1.4
 
 - Fixed incorrect time on initial page load with newer Turbolinks - #17 (@brandonweiss)
+
+# 1.1.5
+
+- Don't strip `X-Request-Start` header which New Relic relies on. - #20
