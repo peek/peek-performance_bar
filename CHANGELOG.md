@@ -26,3 +26,7 @@
 # 1.1.5
 
 - Don't strip `X-Request-Start` header which New Relic relies on. - #20
+
+# 1.1.6
+
+- Namespace ProcessUtilization middleware to Peek::Views::PerformanceBar - #21 (@jnunemaker)
