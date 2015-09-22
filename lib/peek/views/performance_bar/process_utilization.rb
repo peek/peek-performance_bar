@@ -124,7 +124,7 @@ module Peek
           
           # Delegate calls to @body to be compatible with other middlewares
           def method_missing(name, *args, &block)
-            super unless @body.response_to?(name)
+            super unless @body.respond_to?(name)
             
             @body.send(name, *args, &block)
           end
