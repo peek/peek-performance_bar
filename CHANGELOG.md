@@ -30,3 +30,7 @@
 # 1.1.6
 
 - Namespace ProcessUtilization middleware to Peek::Views::PerformanceBar - #21 (@jnunemaker)
+
+# 1.2.0
+
+- Allow `PerformanceBar::ProcessUtilization::Body` to behave like normal response body - #22 (@tubaxenor)
