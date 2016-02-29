@@ -119,15 +119,15 @@ renderPerformanceBar = ->
   span.tipsy gravity: $.fn.tipsy.autoNS
   updateStatus span
 
-
 updateStatus = (html) ->
   $('#serverstats').html html
 
 ajaxStart = null
-$(document).on 'pjax:start page:fetch', (event) ->
+$(document).on 'pjax:start page:fetch turbolinks:request-start', (event) ->
   ajaxStart = event.timeStamp
 
-$(document).on 'pjax:end page:load', (event, xhr) ->
+$(document).on 'pjax:end page:load turbolinks:load', (event, xhr) ->
+  return unless ajaxStart?
   ajaxEnd    = event.timeStamp
   total      = ajaxEnd - ajaxStart
   serverTime = if xhr then parseInt(xhr.getResponseHeader('X-Runtime')) else 0
