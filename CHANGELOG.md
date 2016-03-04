@@ -34,3 +34,7 @@
 # 1.2.0
 
 - Allow `PerformanceBar::ProcessUtilization::Body` to behave like normal response body - #22 (@tubaxenor)
+
+# 1.2.1
+
+- Listen to Turbolinks v5 `turbolinks:request-start` and `turbolinks:load` JS events to trigger peek-performance_bar updates. - [#26](https://github.com/peek/peek-performance_bar/pull/26) [@lucasmazza](https://github.com/lucasmazza)
