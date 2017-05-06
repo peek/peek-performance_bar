@@ -41,6 +41,7 @@ CSS:
 
 ```scss
 //= require peek
+//= require peek/vendor/tipsy
 //= require peek/views/performance_bar
 ```
 
