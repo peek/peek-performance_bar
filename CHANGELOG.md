@@ -38,3 +38,8 @@
 # 1.2.1
 
 - Listen to Turbolinks v5 `turbolinks:request-start` and `turbolinks:load` JS events to trigger peek-performance_bar updates. - [#26](https://github.com/peek/peek-performance_bar/pull/26) [@lucasmazza](https://github.com/lucasmazza)
+
+# 1.3.0
+
+- Remove CoffeeScript support in favor of plain JavaScript. - [#28](https://github.com/peek/peek-performance_bar/pull/28) [@gfx](https://github.com/gfx)
+- Use Rack::BodyProxy to fix X-Sendfile header being incorrectly set. - [#27](https://github.com/peek/peek-performance_bar/pull/27) [@rymai](https://github.com/rymai)
