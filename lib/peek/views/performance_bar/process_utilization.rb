@@ -1,3 +1,5 @@
+require "rack/body_proxy"
+
 module Peek
   module Views
     class PerformanceBar
