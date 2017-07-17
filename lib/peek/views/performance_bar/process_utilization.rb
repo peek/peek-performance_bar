@@ -104,32 +104,6 @@ module Peek
           warn "ProcessUtilization#record_request failed: #{boom.inspect}"
         end
 
-        # Body wrapper. Yields to the block when body is closed. This is used to
-        # signal when a response is fully finished processing.
-        class Body
-          def initialize(body, &block)
-            @body = body
-            @block = block
-          end
-
-          def each(&block)
-            @body.each(&block)
-          end
-
-          def close
-            @body.close if @body.respond_to?(:close)
-            @block.call
-            nil
-          end
-          
-          # Delegate calls to @body to be compatible with other middlewares
-          def method_missing(name, *args, &block)
-            super unless @body.respond_to?(name)
-            
-            @body.send(name, *args, &block)
-          end
-        end
-
         # Rack entry point.
         def call(env)
           @env = env
@@ -142,7 +116,7 @@ module Peek
           env['process.total_requests'] = total_requests
 
           status, headers, body = @app.call(env)
-          body = Body.new(body) { record_request }
+          body = Rack::BodyProxy.new(body) { record_request }
           [status, headers, body]
         end
       end
