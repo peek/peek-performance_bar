@@ -27,6 +27,8 @@ Or install it yourself as:
 
     $ gem install peek-performance_bar
 
+Also peek-performance_bar requires jquery.tipsy. It cab be easy installed with gem tipsy-rails.
+
 ## Usage
 
 Add the following to your `config/initializers/peek.rb`:
