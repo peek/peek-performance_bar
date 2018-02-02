@@ -108,7 +108,6 @@ module Peek
 
         # Rack entry point.
         def call(env)
-          @env = env
           reset_stats
 
           @total_requests += 1
